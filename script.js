@@ -25,9 +25,6 @@ squar.addEventListener('click', function(event){
         if(event.target.attributes.class.value != "squar"){
             shape = document.querySelector('#'+event.target.attributes.id.value);
             check = true;
-       }else{
-            shape = null
-            check = false;
        }
     }   
 });
