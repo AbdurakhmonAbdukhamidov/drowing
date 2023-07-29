@@ -1,64 +1,51 @@
-var text= document.createElement('h1');
-document.body.append(text)
-var mousePos = null
-var mousewithoutpage = null
-var circle2 = document.querySelector('.circle')
-var box = document.querySelector('.box')
+let box = document.querySelector('.box')
+let squar = document.querySelector('.squar')
 var check = false;
-var shape;
-var widthBox = window.innerWidth*10/100;
-var shapes = [];
-var reallyCircle = document.querySelector('.really_circle')
-console.dir(Date.prototype.getMilliseconds);
-
-circle2.addEventListener('click', function(event){
-    console.log(event);
-    this.circle = document.createElement('div')
-    shapes.push(this.circle);
-    this.circle.setAttribute('id','circle'+(shapes.length));
-    this.circle.setAttribute('class','circle');
-    this.circle.style.top = "0px"
-    this.circle.style.left = "0px"
-    this.circle.style.position = 'absolute'
-    box.append(this.circle)
-})
+let shape;
+let shapes = [];
+let circle = document.querySelector('.circle')
+let createElement;
 
 box.addEventListener('click', function(event){
-   if(event.target.attributes.class.value != "box"){
-      shape = document.querySelector('#'+event.target.attributes.id.value);
-      console.log(shape);
-      check == true;
-   }else{
-    shape = null
-   }
-    if(check == false){
-            check = true;
-            shape.style.top = event.layerY + "px"
-            shape.style.left = event.layerX + "px"
+    this.createElement = document.createElement('div')
+    this.createElement.setAttribute('id','box'+(shapes.length));
+    this.createElement.setAttribute('class','box');
+    this.createElement.style.top = "0px"
+    this.createElement.style.left = "0px"
+    this.createElement.style.position = 'absolute'
+    squar.append(this.createElement)
+    shapes.push(this.createElement);
+})
 
+squar.addEventListener('click', function(event){
+    if(check==true){
+       check=false
+       shape=null
     }else{
-        check = false;
-    }
-
-   
-
-    
+        if(event.target.attributes.class.value != "squar"){
+            shape = document.querySelector('#'+event.target.attributes.id.value);
+            check = true;
+       }else{
+            shape = null
+            check = false;
+       }
+    }   
 });
 
-box.addEventListener('mousemove', (e) =>{
+squar.addEventListener('mousemove', (e) =>{
     if(check == true){ 
         shape.style.top = e.layerY + "px"
         shape.style.left = e.layerX + "px"
     }
 })
 
-reallyCircle.addEventListener('click', function(){
-    this.circle = document.createElement('div')
-    shapes.push(this.circle);
-    this.circle.setAttribute('id','really_circle'+(shapes.length));
-    this.circle.setAttribute('class','really_circle');
-    this.circle.style.top = "0px"
-    this.circle.style.left = "0px"
-    this.circle.style.position = 'absolute'
-    box.append(this.circle)
+circle.addEventListener('click', function(){
+    this.createElement = document.createElement('div')
+    this.createElement.setAttribute('id','circle'+(shapes.length));
+    this.createElement.setAttribute('class','circle');
+    this.createElement.style.top = "0px"
+    this.createElement.style.left = "0px"
+    this.createElement.style.position = 'absolute'
+    squar.append(this.createElement)
+    shapes.push(this.createElement);
 })
