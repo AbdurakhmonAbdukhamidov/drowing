@@ -8,6 +8,7 @@ var check = false;
 var shape;
 var widthBox = window.innerWidth*10/100;
 var shapes = [];
+var reallyCircle = document.querySelector('.really_circle')
 console.dir(Date.prototype.getMilliseconds);
 
 circle2.addEventListener('click', function(event){
@@ -16,7 +17,9 @@ circle2.addEventListener('click', function(event){
     shapes.push(this.circle);
     this.circle.setAttribute('id','circle'+(shapes.length));
     this.circle.setAttribute('class','circle');
-    console.log(this.circle);
+    this.circle.style.top = "0px"
+    this.circle.style.left = "0px"
+    this.circle.style.position = 'absolute'
     box.append(this.circle)
 })
 
@@ -30,8 +33,8 @@ box.addEventListener('click', function(event){
    }
     if(check == false){
             check = true;
-            shape.style.top = e.layerY + "px"
-            shape.style.left = e.layerX + "px"
+            shape.style.top = event.layerY + "px"
+            shape.style.left = event.layerX + "px"
 
     }else{
         check = false;
@@ -47,4 +50,15 @@ box.addEventListener('mousemove', (e) =>{
         shape.style.top = e.layerY + "px"
         shape.style.left = e.layerX + "px"
     }
+})
+
+reallyCircle.addEventListener('click', function(){
+    this.circle = document.createElement('div')
+    shapes.push(this.circle);
+    this.circle.setAttribute('id','really_circle'+(shapes.length));
+    this.circle.setAttribute('class','really_circle');
+    this.circle.style.top = "0px"
+    this.circle.style.left = "0px"
+    this.circle.style.position = 'absolute'
+    box.append(this.circle)
 })
