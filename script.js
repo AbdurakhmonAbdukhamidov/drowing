@@ -10,7 +10,8 @@ var widthBox = window.innerWidth*10/100;
 var shapes = [];
 console.dir(Date.prototype.getMilliseconds);
 
-circle2.addEventListener('click', function(){
+circle2.addEventListener('click', function(event){
+    console.log(event);
     this.circle = document.createElement('div')
     shapes.push(this.circle);
     this.circle.setAttribute('id','circle'+(shapes.length));
@@ -24,11 +25,14 @@ box.addEventListener('click', function(event){
       shape = document.querySelector('#'+event.target.attributes.id.value);
       console.log(shape);
       check == true;
+   }else{
+    shape = null
    }
     if(check == false){
             check = true;
             shape.style.top = e.layerY + "px"
             shape.style.left = e.layerX + "px"
+
     }else{
         check = false;
     }
@@ -40,7 +44,6 @@ box.addEventListener('click', function(event){
 
 box.addEventListener('mousemove', (e) =>{
     if(check == true){ 
-        console.log(shape);
         shape.style.top = e.layerY + "px"
         shape.style.left = e.layerX + "px"
     }
